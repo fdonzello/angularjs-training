@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-switch</title>
+</head>
+
+<body>
+    <div ng-app="mainApp" ng-controller="SwitchController">
+        Nationality:
+        <div ng-switch="data.nationality">
+            <p ng-switch-when="it">Italian!</p>
+            <p ng-switch-when="en">English!</p>
+            <p ng-switch-default>Don't know..</p>
+        </div>
+    </div>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script>
+        const mainApp = angular.module("mainApp", []);
+
+        mainApp.controller('SwitchController', ($scope) => {
+            $scope.data = {
+                nationality: "it",
+            };
+        });
+    </script>
+</body>
+
+</html>

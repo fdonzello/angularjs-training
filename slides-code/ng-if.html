@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-if</title>
+</head>
+
+<body>
+    <div ng-app="mainApp">
+        <div ng-controller="IfController">
+            <button ng-click="data.toggle()">Show / Hide</button>
+            <p ng-if="data.show">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur eligendi aliquam esse doloremque
+                quam
+                impedit unde, numquam nulla temporibus dolor non maiores modi fuga sint laboriosam neque sit nisi.
+                Delectus.
+            </p>
+        </div>
+    </div>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script>
+        const mainApp = angular.module("mainApp", []);
+
+        mainApp.controller('IfController', ($scope) => {
+            $scope.data = {
+                show: false,
+                toggle: () => {
+                    console.log('toggle')
+                    $scope.data.show = !$scope.data.show;
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

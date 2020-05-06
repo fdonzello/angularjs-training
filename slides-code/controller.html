@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controller</title>
+</head>
+
+<body>
+    <div ng-app="mainApp" ng-controller="studentController">
+        Your First Name: <input type="text" ng-model="student.firstName"><br><br>
+        Your Last Name: <input type="text" ng-model="student.lastName"><br><br>
+        <h2>{{ student.fullName() }}</h2>
+    </div>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script>
+        const mainApp = angular.module("mainApp", []);
+
+        mainApp.controller('studentController', ($scope) => {
+            $scope.student = {
+                firstName: "Marco",
+                lastName: "Rossi",
+
+                fullName: () => {
+                    return $scope.student.firstName + " " + $scope.student.lastName;
+                }
+            };
+        });
+    </script>
+</body>
+
+</html>

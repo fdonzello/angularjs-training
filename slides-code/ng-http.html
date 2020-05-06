@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-http</title>
+</head>
+
+<body>
+    <div ng-app="mainApp">
+        <div ng-controller="DogController as ctrl">
+            <img height="512" ng-src="{{ ctrl.dog }}" />
+        </div>
+    </div>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script>
+        const mainApp = angular.module("mainApp", []);
+
+        mainApp.controller('DogController', function ($scope, $http) {
+            var vm = this;
+
+            var req = {
+                method: 'POST',
+                url: 'http://example.com',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: { test: 'test' }
+            }
+            $http(req)
+                .success(function () {
+                })
+                .error(function () {
+                });
+
+            vm.dog = "";
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-form</title>
+</head>
+
+<body>
+    <div ng-app="myServiceModule">
+        <div ng-controller="ServiceController">
+            <p>Let's try this simple notify service, injected into the controller...</p>
+            <input ng-init="message='test'" ng-model="message">
+            <button ng-click="callNotify(message);">NOTIFY</button>
+            <p>(you have to click 3 times to see an alert)</p>
+        </div>
+    </div>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script>
+        angular.
+            module('myServiceModule', []).
+            controller('ServiceController', ['$scope', 'notify', function ($scope, notify) {
+                $scope.callNotify = function (msg) {
+                    notify(msg);
+                };
+            }]).
+            factory('notify', ['$window', function (win) {
+                var msgs = [];
+                return function (msg) {
+                    msgs.push(msg);
+                    if (msgs.length === 3) {
+                        win.alert(msgs.join(', '));
+                        msgs = [];
+                    }
+                };
+            }]);
+    </script>
+</body>
+
+</html>

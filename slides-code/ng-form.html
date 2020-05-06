@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ng-form</title>
+</head>
+
+<body>
+    <div ng-app="mainApp" ng-controller="FormController">
+        <form novalidate class="simple-form">
+            <label>Name: <input type="text" ng-model="user.name" /></label>
+            <label>E-mail: <input type="email" ng-model="user.email" /></label>
+
+            Adult: <label><input type="radio" ng-model="user.adult" value="true" />yes</label>
+            <label><input type="radio" ng-model="user.adult" value="false" />no</label>
+
+            <input type="submit" ng-click="update(user)" value="Save" />
+        </form>
+        <pre>user = {{user | json}}</pre>
+    </div>
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script>
+        angular
+            .module('mainApp', [])
+            .controller('FormController', ['$scope', function ($scope) {
+                $scope.update = function (user) {
+                    console.log(user);
+                };
+            }]);
+    </script>
+</body>
+
+</html>
