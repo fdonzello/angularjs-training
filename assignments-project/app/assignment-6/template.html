@@ -1,0 +1,40 @@
+<h2>Assignment</h2>
+<ol>
+    <li>use the json-server to get a list of users (I'm using => https://jsonplaceholder.typicode.com/todos)</li>
+    <li>display them in a UserList component (I'm using a DummyList component)</li>
+</ol>
+
+<button class="btn btn-primary" ng-click="$ctrl.toggleSolution()">
+    {{ $ctrl.showSolution ? 'Hide Solution' : 'Show Solution' }}
+</button>
+
+<ng-container ng-if="$ctrl.showSolution">
+    <hr>
+    <button type="button" ng-click="$ctrl.load()" class="btn btn-primary">Load TODOs</button>
+
+    <div class="spinner-border" role="status" ng-if="$ctrl.loading">
+        <span class="sr-only">Loading...</span>
+    </div>
+
+    <div class="card mt-2" ng-repeat="item in $ctrl.items">
+        <div class="card-body">
+            <svg ng-if="item.completed" class="bi bi-check-circle" width="1em" height="1em" viewBox="0 0 16 16"
+                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                    d="M15.354 2.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L8 9.293l6.646-6.647a.5.5 0 01.708 0z"
+                    clip-rule="evenodd" />
+                <path fill-rule="evenodd"
+                    d="M8 2.5A5.5 5.5 0 1013.5 8a.5.5 0 011 0 6.5 6.5 0 11-3.25-5.63.5.5 0 11-.5.865A5.472 5.472 0 008 2.5z"
+                    clip-rule="evenodd" />
+            </svg>
+
+            <svg ng-if="!item.completed" class="bi bi-circle" width="1em" height="1em" viewBox="0 0 16 16"
+                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z"
+                    clip-rule="evenodd" />
+            </svg>
+            {{ item.title }}
+        </div>
+    </div>
+
+</ng-container>
