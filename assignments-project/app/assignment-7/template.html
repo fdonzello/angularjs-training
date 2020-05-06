@@ -1,0 +1,18 @@
+<h2>Assignment</h2>
+<ol>
+    <li>create and use a filter that converts user name in CamelCase</li>
+    <li>continue the work on the 6th Assignment</li>
+</ol>
+
+<button class="btn btn-primary" ng-click="$ctrl.toggleSolution()">
+    {{ $ctrl.showSolution ? 'Hide Solution' : 'Show Solution' }}
+</button>
+
+<ng-container ng-if="$ctrl.showSolution">
+    <hr>
+
+    camelCase({{ $ctrl.user.fullname }}) <br>
+
+    <strong>{{ $ctrl.user.fullname | camelCase }}</strong>
+
+</ng-container>

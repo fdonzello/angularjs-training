@@ -1,0 +1,37 @@
+<h2>Assignment</h2>
+<ol>
+    <li>Create a Controller named Dir</li>
+    <li>Declare, in the scope, an array of languages with three strings: “it”, “en”, “es”</li>
+    <li>use ng-repeat to show a button for each language</li>
+    <li>once a button is clicked, set the clicked language as the current one</li>
+    <li>use ng-switch to show the translation of “hi” depending on the current language (set at 4th step)</li>
+    <li>use ng-if to show/hide all the content of dir controller using a boolean property</li>
+</ol>
+
+<button class="btn btn-primary" ng-click="$ctrl.toggleSolution()">
+    {{ $ctrl.showSolution ? 'Hide Solution' : 'Show Solution' }}
+</button>
+
+
+<ng-container ng-if="$ctrl.showSolution">
+    <hr>
+    <ul>
+        <li class="mt-2" ng-repeat="l in $ctrl.languages">
+            <button class="btn" ng-class="{'btn-primary': $ctrl.chosenLanguage == l}"
+                ng-click="$ctrl.setLanguage(l)">{{ l }}</button>
+        </li>
+    </ul>
+    <hr>
+    Current Language: {{$ctrl.chosenLanguage}}
+    <div ng-switch="$ctrl.chosenLanguage">
+        <p ng-switch-when="it">Ciao!</p>
+        <p ng-switch-when="en">Hi!</p>
+        <p ng-switch-when="fr">Salut!</p>
+        <p ng-switch-default>
+            <a
+                href="https://translate.google.com/?client=firefox-b-d&um=1&ie=UTF-8&hl=it&client=tw-ob#view=home&op=translate&sl=en&tl={{ $ctrl.chosenLanguage }}&text=hi">
+                Your friend, Google Translate
+            </a>
+        </p>
+    </div>
+</ng-container>

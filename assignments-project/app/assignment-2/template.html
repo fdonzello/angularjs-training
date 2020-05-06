@@ -1,0 +1,25 @@
+<h2>Assignment</h2>
+<ol>
+    <li>Create a Directive named Country</li>
+    <li>It can only be used as an html element</li>
+    <li>this directive prints the country name from the passed in country code (eg: “it” => prints “italy”)</li>
+    <li>DON’T use the templateUrl (<i>sorry, I did</i>)</li>
+</ol>
+
+<button class="btn btn-primary" ng-click="$ctrl.toggleSolution()">
+    {{ $ctrl.showSolution ? 'Hide Solution' : 'Show Solution' }}
+</button>
+
+
+<ng-container ng-if="$ctrl.showSolution">
+    <hr>
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Country Code</label>
+        <input ng-model="$ctrl.countryCode" type="text" class="form-control" id="exampleInputEmail1"
+            aria-describedby="emailHelp">
+        <small id="emailHelp" class="form-text text-muted">Will be passed to the directive.</small>
+    </div>
+
+    <country code="$ctrl.countryCode"></country>
+</ng-container>
